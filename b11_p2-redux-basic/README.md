@@ -1,4 +1,4 @@
-<!-- Code cu trong 1 file -->
+// Code cu trong 1 file
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -74,3 +74,14 @@ createRoot(document.getElementById("root")).render(
     <App />
   </Provider>
 );
+
+
+
+
+// Tach file: them import va export
+// Flow Setup: 
+// 0. Tao UI
+// 1. action (type, action creator (function))
+// 2. reducer => store
+// 3. Khai bao provider
+// 4. Vao UI => su dung useDispatch() va useSelector() thao tac Store
