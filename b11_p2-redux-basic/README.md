@@ -1,12 +1,76 @@
-# React + Vite
+<!-- Code cu trong 1 file -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { createStore } from "redux";
 
-Currently, two official plugins are available:
+// Khoi tao gia tri ban dau
+const initialState = {
+  count: 0,
+};
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+// Dinh nghia action type & action creator
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
 
-## Expanding the ESLint configuration
+const incrementFn = () => {
+  return { type: INCREMENT };
+};
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+const decrementFn = () => {
+  return { type: DECREMENT };
+};
+
+// Dinh nghia store & reducer
+const counterReducer = (state = initialState, action) => {
+  // console.log("state: ", state);
+  // console.log("action: ", action);
+
+  switch (action.type) {
+    case INCREMENT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case DECREMENT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    default:
+      return state;
+  }
+};
+
+const myStore = createStore(counterReducer);
+
+// Hien thi ra giao dien
+const App = () => {
+  const couter = useSelector((state) => state);
+  console.log(couter);
+
+  const dispatch = useDispatch();
+
+  const handleIncrement = () => {
+    dispatch(incrementFn());
+  };
+  const handleDecrement = () => {
+    dispatch(decrementFn());
+  };
+
+  return (
+    <>
+      <h1>{couter.count}</h1>
+      <button onClick={handleIncrement}>Count++</button>
+      <button onClick={handleDecrement}>Count--</button>
+    </>
+  );
+};
+
+// Khai bao store voi provider de tat ca component con co the dung no => Duoc dat o thanh phan cao nhat
+createRoot(document.getElementById("root")).render(
+  <Provider store={myStore}>
+    <App />
+  </Provider>
+);
