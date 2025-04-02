@@ -3,8 +3,7 @@ import { decrementFn, incrementFn } from "./redux/actions";
 
 // Hien thi ra giao dien
 const App = () => {
-  const couter = useSelector((state) => state);
-  console.log(couter);
+  const couter = useSelector((abc) => abc.aa.count);
 
   const dispatch = useDispatch();
 
@@ -17,7 +16,7 @@ const App = () => {
 
   return (
     <>
-      <h1>{couter.count}</h1>
+      <h1>{couter}</h1>
       <button onClick={handleIncrement}>Count++</button>
       <button onClick={handleDecrement}>Count--</button>
     </>
