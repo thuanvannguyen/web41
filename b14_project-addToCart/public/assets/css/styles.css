@@ -1,0 +1,26 @@
+body {
+  max-width: 40%;
+  margin: auto;
+}
+
+.product-listing {
+  display: flex;
+  gap: 20px;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: 20px 30px;
+}
+
+.header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+}
+.header button {
+  font-size: 20px;
+}
