@@ -1,14 +1,18 @@
 import React, { useRef, useState } from "react";
+import { APP } from "../../../constant";
+import { useDispatch } from "react-redux";
+import { loginThunk } from "../../slices/authSlice";
 
 const FormAuth = () => {
+  const [errorInput, setErrorInput] = useState("");
   const [formState, setFormSate] = useState({
     email: "",
     password: "",
     checkbox: true,
   });
-  const [errorInput, setErrorInput] = useState("");
 
   const inputRef = useRef();
+  const dispatch = useDispatch();
 
   const handlChange = (e) => {
     const { type, value, name, checked } = e.target;
@@ -29,13 +33,19 @@ const FormAuth = () => {
     return isVal;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     // Tat su kien reload default browser
     e.preventDefault();
 
     if (isValidate()) {
-      // Submit du lieu
-      console.log("Thong tin user: ", formState);
+      const { email, password } = formState;
+
+      // Call API LOGIN
+      try {
+        await dispatch(loginThunk({ email, password }));
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
