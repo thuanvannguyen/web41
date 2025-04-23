@@ -6,7 +6,7 @@ const Header = () => {
     <header id="header" className="header d-flex align-items-center sticky-top">
       <div className="container position-relative d-flex align-items-center justify-content-between">
         <Link
-          to="index.html"
+          to="/"
           className="logo d-flex align-items-center me-auto me-xl-0"
         >
           {/* Uncomment the line below if you also wish to use an image logo */}
@@ -86,7 +86,7 @@ const Header = () => {
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list" />
         </nav>
-        <Link className="btn-getstarted" to="index.html#book-a-table">
+        <Link className="btn-getstarted" to="/login">
           Book a Table
         </Link>
       </div>

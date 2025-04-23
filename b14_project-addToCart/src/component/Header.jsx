@@ -11,7 +11,7 @@ const Header = ({toggleCheckout}) => {
   let count = 0;
 
   data.forEach(product => {
-    count += product.price * product.quantity;
+    count += product.quantity;
   })
 
   return (
