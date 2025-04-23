@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { APP } from "../../../constant";
 import { useDispatch } from "react-redux";
 import { loginThunk } from "../../slices/authSlice";
+import { useNavigate } from "react-router";
 
 const FormAuth = () => {
   const [errorInput, setErrorInput] = useState("");
@@ -13,6 +14,7 @@ const FormAuth = () => {
 
   const inputRef = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handlChange = (e) => {
     const { type, value, name, checked } = e.target;
@@ -42,9 +44,13 @@ const FormAuth = () => {
 
       // Call API LOGIN
       try {
-        await dispatch(loginThunk({ email, password }));
+        await dispatch(loginThunk({ email, password })).unwrap();
+
+        // Login thanh cong
+        navigate("/dashboard");
       } catch (error) {
         console.log(error);
+        alert("Login that bai!")
       }
     }
   };
