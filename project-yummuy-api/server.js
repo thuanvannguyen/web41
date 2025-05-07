@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Mock user data
-const users = [{ email: "test@example.com", password: "password123" }];
+const users = [{ email: "test@example.com", password: "12345" }];
 
 // Hàm để tạo token ngẫu nhiên
 const generateToken = () => {

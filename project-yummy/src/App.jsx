@@ -5,6 +5,7 @@ import HomePage from "./pages/home";
 import LayoutPage from "./pages/layout";
 import Dashboad from "./pages/dashboard";
 import NotFound from "./pages/auth/NotFound";
+import ProtectedRoute from "./pages/auth/ProtectedRoute";
 
 const App = () => {
   return (
@@ -12,8 +13,17 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LayoutPage />}>
           <Route index element={<HomePage />} />
-          <Route path="/dashboard" element={<Dashboad />} />
+
+
           <Route path="/login" element={<LoginPage />} />
+
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboad />
+            </ProtectedRoute>
+            } />
+
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useAuth } from "../../hooks/useAuth";
 import FormAuth from "./Form";
 
 const LoginPage = () => {
+  const isAuth = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if(isAuth) {
+      // dieu huong ve luong trang dahsboad
+      navigate("/dashboard")
+    }
+  }, [])
+
+
   return (
     <>
       <section className="">
