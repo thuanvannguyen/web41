@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useAuth } from "../../App";
 import FormAuth from "./Form";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const isAuthenticated = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <>
       <section className="">
@@ -26,7 +37,7 @@ const LoginPage = () => {
               <div className="col-lg-6 mb-5 mb-lg-0">
                 <div className="card">
                   <div className="card-body py-5 px-md-5">
-                    <FormAuth/>
+                    <FormAuth />
                   </div>
                 </div>
               </div>

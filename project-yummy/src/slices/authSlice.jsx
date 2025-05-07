@@ -23,23 +23,33 @@ const authSlice = createSlice({
       state.user = null;
       state.error = null;
     },
+    setUserFromLocalStorage: (state, action) => {
+      state.isAuth = true;
+      state.user = action.payload;
+      state.error = null;
+    },
   },
+
   extraReducers: (builder) => {
     builder.addCase(loginThunk.fulfilled, (state, action) => {
       // Call thành công
-      console.log("state fulfilled: ", JSON.parse(JSON.stringify(state)));
-      console.log("action fulfilledk: ", action);
+      state.isAuth = true;
+      state.user = action.payload;
+      state.error = null;
+
+      localStorage.setItem("user", JSON.stringify(action.payload));
     });
     builder.addCase(loginThunk.rejected, (state, action) => {
       // Call thất bại
-      console.log("state rejected: ", JSON.parse(JSON.stringify(state)));
-      console.log("action rejectedk: ", action);
+      state.isAuth = false;
+      state.user = null;
+      state.error = action.error.message;
     });
   },
 });
 
 // Export các hành động người dùng -> UI sử dụng
-export const { logout } = authSlice.actions;
+export const { logout, setUserFromLocalStorage } = authSlice.actions;
 
 // Export Reducer -> Thêm vào store
 export default authSlice.reducer;

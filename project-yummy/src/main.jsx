@@ -1,14 +1,20 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../public/assets/css/main.css";
 import { Provider } from "react-redux";
+import App from "./App.jsx";
 
-// Slider
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+// Font Family
+import "@fontsource/roboto";
+import "@fontsource/unbounded";
+
+// Swiper CSS
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+// Redux Store
 import yummyStore from "./store.js";
 
 createRoot(document.getElementById("root")).render(
