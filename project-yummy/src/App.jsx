@@ -1,11 +1,10 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import LoginPage from "./pages/auth/Login";
-import HomePage from "./pages/home";
-import LayoutPage from "./pages/layout";
-import Dashboad from "./pages/dashboard";
 import NotFound from "./pages/auth/NotFound";
 import ProtectedRoute from "./pages/auth/ProtectedRoute";
+import Dashboad from "./pages/dashboard";
+import HomePage from "./pages/home";
+import LayoutPage from "./pages/layout";
 import DashboardLayout from "./pages/layout/Dashboard";
 
 const App = () => {
