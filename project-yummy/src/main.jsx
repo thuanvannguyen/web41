@@ -12,6 +12,9 @@ import "swiper/css/pagination";
 import "@fontsource/roboto";
 import "@fontsource/unbounded";
 
+// Icon
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 createRoot(document.getElementById("root")).render(
   <Provider store={yummyStore}>
     <App />
