@@ -1,7 +1,26 @@
-import React from "react";
-import { Link } from "react-router";
+import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router";
+import { logout } from "../../slices/authSlice";
 
 const SidebarMenu = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation(); // Get thong tin URL Browser
+  console.log(location.pathname);
+
+  const handleLogout = () => {
+    // Xoa toan bo thong tin user localStorage
+    localStorage.clear();
+    // Xoa thong tin store
+    dispatch(logout());
+    // Chuyen huong trang chu
+    navigate("/");
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path; // Dung => true, sai => fasle
+  };
+
   return (
     <nav
       id="sidebarMenu"
@@ -11,7 +30,7 @@ const SidebarMenu = () => {
         <ul className="nav flex-column h-100">
           <li className="nav-item">
             <Link
-              className="nav-link active"
+              className={`nav-link ${isActive("/dashboard") ? "active" : ""}`}
               aria-current="page"
               to="/dashboard"
             >
@@ -19,9 +38,12 @@ const SidebarMenu = () => {
               Tổng quan
             </Link>
           </li>
+
           <li className="nav-item">
             <Link
-              className="nav-link"
+              className={`nav-link ${
+                isActive("/dashboard/user") ? "active " : ""
+              }`}
               aria-current="page"
               to="/dashboard/user"
             >
@@ -29,11 +51,12 @@ const SidebarMenu = () => {
               Quản lý Người dùng
             </Link>
           </li>
+
           <li className="nav-item border-top mt-auto pt-2">
-            <a className="nav-link" href="#">
+            <button className="nav-link" onClick={handleLogout}>
               <i className="bi-box-arrow-left me-2" />
               Logout
-            </a>
+            </button>
           </li>
         </ul>
       </div>

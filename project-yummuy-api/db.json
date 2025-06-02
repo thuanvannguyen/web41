@@ -1,13 +1,29 @@
 {
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
-  ],
-  "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "id": "1",
+      "name": "user 1",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "user 2",
+      "role": "employee"
+    },
+    {
+      "id": "3",
+      "name": "user 3",
+      "role": "customer"
+    },
+    {
+      "id": "35f8",
+      "name": "USER 4",
+      "role": "admin"
+    },
+    {
+      "id": "9427",
+      "name": "user 5",
+      "role": "client"
+    }
+  ]
 }
